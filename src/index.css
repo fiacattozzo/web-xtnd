@@ -1,40 +1,30 @@
-/* src/index.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* Importa la tipografía Space Grotesk desde Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;900&display=swap');
 
-/* Este es el contenedor principal que permite el scroll-snapping */
 body {
-  height: 100vh;
-  /* La propiedad clave que hace el "enganche" al hacer scroll */
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  /* Aplica la tipografía Space Grotesk Bold a todo el body */
   font-family: 'Space Grotesk', sans-serif;
   background-color: #000;
   color: white;
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
 }
 
-/* Ocultar la barra de desplazamiento para un diseño más limpio */
-body::-webkit-scrollbar {
-  display: none;
-}
-body {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
+/* Ocultar scrollbar */
+body::-webkit-scrollbar { display: none; }
+body { -ms-overflow-style: none; scrollbar-width: none; }
 
-/* Cada sección se "engancha" en la parte superior de la ventana */
 .scroll-section {
   min-height: 100vh;
   width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* Alinea el inicio de la sección con el inicio del scroll */
   scroll-snap-align: start;
+  position: relative;
 }
