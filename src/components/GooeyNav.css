@@ -1,0 +1,156 @@
+.gooey-nav-container {
+  position: relative;
+  padding: 1rem 0;
+  background: #fff; /* Fondo blanco */
+  border-radius: 2rem;
+  box-shadow: 0 8px 32px 0 rgba(14,165,233,0.15), 0 1.5px 6px 0 rgba(0,0,0,0.08);
+}
+
+.gooey-nav-list {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  padding: 0 2rem;
+  margin: 0;
+  position: relative;
+  z-index: 3;
+}
+
+.gooey-nav-item {
+  position: relative;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: color 0.3s, text-shadow 0.3s;
+  color: #222; 
+  font-weight: 500;
+  font-size: 1.1rem;
+  padding: 0.6em 1.2em;
+  background: none;
+  outline: none;
+}
+
+.gooey-nav-item.active {
+  color: #ffffff; 
+  font-weight: 700;
+  text-shadow: 0 2px 12px #ffffff;
+}
+
+.gooey-nav-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #920CF2 0%, #060A27 100%);
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.3s cubic-bezier(.4,0,.2,1);
+  z-index: -1;
+}
+
+.gooey-nav-item.active::after {
+  opacity: 1;
+  transform: scale(1);
+  box-shadow: 0 0 24px 0 #060A27;
+}
+
+.gooey-effect-filter {
+  position: absolute;
+  pointer-events: none;
+  filter: blur(10px) contrast(110) brightness(1.15);
+  mix-blend-mode: lighten;
+  border-radius: 1em;
+  box-shadow: 0 0 40px 0 #920CF2;
+  z-index: 1;
+}
+
+.gooey-effect-text {
+  position: absolute;
+  pointer-events: none;
+  display: grid;
+  place-items: center;
+  color: white;
+  font-weight: 700;
+  font-size: 1.1em;
+  letter-spacing: 0.03em;
+  transition: color 0.4s cubic-bezier(.4,0,.2,1), text-shadow 0.4s;
+  text-shadow: 0 2px 8px #ffffff;
+  z-index: 1;
+}
+
+.gooey-effect-text.active {
+  color: #ffffff;
+  text-shadow: 0 2px 12px #ffffff;
+}
+
+/* Particle styles */
+.gooey-particle, .gooey-point {
+  display: block;
+  opacity: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 9999px;
+  transform-origin: center;
+}
+
+.gooey-point {
+  background: #060A27;
+  opacity: 1;
+  box-shadow: 0 0 12px 0 #060A27;
+}
+
+.gooey-particle {
+  position: absolute;
+  top: calc(50% - 12px);
+  left: calc(50% - 12px);
+  animation: gooey-particle-anim var(--time, 1200ms) ease 1;
+}
+
+.gooey-point {
+  animation: gooey-point-anim var(--time, 1200ms) ease 1;
+}
+
+@keyframes gooey-particle-anim {
+  0% {
+    transform: rotate(0deg) translate(var(--start-x, 0px), var(--start-y, 0px));
+    opacity: 1;
+  }
+  70% {
+    transform: rotate(calc(var(--rotate, 0deg)*0.5)) translate(calc(var(--end-x, 0px)*1.2), calc(var(--end-y, 0px)*1.2));
+  }
+  85% {
+    transform: rotate(calc(var(--rotate, 0deg)*0.66)) translate(var(--end-x, 0px), var(--end-y, 0px));
+  }
+  100% {
+    transform: rotate(calc(var(--rotate, 0deg)*1.2)) translate(calc(var(--end-x, 0px)*0.5), calc(var(--end-y, 0px)*0.5));
+    opacity: 1;
+  }
+}
+
+@keyframes gooey-point-anim {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  25% {
+    transform: scale(calc(var(--scale, 1)*0.25));
+  }
+  38% {
+    opacity: 1;
+  }
+  65% {
+    transform: scale(var(--scale, 1));
+    opacity: 1;
+  }
+  85% {
+    transform: scale(var(--scale, 1));
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+.gooey-nav-item a {
+  text-decoration: none;
+}
