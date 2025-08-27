@@ -1,9 +1,9 @@
 .gooey-nav-container {
   position: relative;
   padding: 1rem 0;
-  background: #fff; /* Fondo blanco */
+  background: transparent;
   border-radius: 2rem;
-  box-shadow: 0 8px 32px 0 rgba(14,165,233,0.15), 0 1.5px 6px 0 rgba(0,0,0,0.08);
+  box-shadow: none;
 }
 
 .gooey-nav-list {
@@ -20,19 +20,20 @@
   position: relative;
   border-radius: 9999px;
   cursor: pointer;
-  transition: color 0.3s, text-shadow 0.3s;
-  color: #222; 
+  color: #ffffff; /* Texto blanco por defecto */
   font-weight: 500;
   font-size: 1.1rem;
   padding: 0.6em 1.2em;
   background: none;
   outline: none;
+  transition: color 0.3s;
+  z-index: 1;
 }
 
 .gooey-nav-item.active {
-  color: #ffffff; 
+  color: #fff; /* Texto blanco cuando activo */
   font-weight: 700;
-  text-shadow: 0 2px 12px #ffffff;
+  text-shadow: 0 2px 12px #920CF2;
 }
 
 .gooey-nav-item::after {
@@ -50,7 +51,18 @@
 .gooey-nav-item.active::after {
   opacity: 1;
   transform: scale(1);
-  box-shadow: 0 0 24px 0 #060A27;
+  /* box-shadow: 0 0 24px 0 #920CF2; */ /* Sombra eliminada */
+}
+
+.gooey-nav-item a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: inherit;
+  padding: 0;
+  margin: 0;
+  background: none;
+  outline: none;
 }
 
 .gooey-effect-filter {
@@ -59,57 +71,53 @@
   filter: blur(10px) contrast(110) brightness(1.15);
   mix-blend-mode: lighten;
   border-radius: 1em;
-  box-shadow: 0 0 40px 0 #920CF2;
-  z-index: 1;
+  box-shadow: none;
 }
 
 .gooey-effect-text {
   position: absolute;
   pointer-events: none;
-  display: grid;
+  display: none !important;
   place-items: center;
-  color: white;
+  color: #fff;
   font-weight: 700;
   font-size: 1.1em;
   letter-spacing: 0.03em;
   transition: color 0.4s cubic-bezier(.4,0,.2,1), text-shadow 0.4s;
-  text-shadow: 0 2px 8px #ffffff;
+  text-shadow: 0 2px 8px #920CF2;
   z-index: 1;
 }
 
 .gooey-effect-text.active {
-  color: #ffffff;
-  text-shadow: 0 2px 12px #ffffff;
+  color: #920CF2;
+  text-shadow: 0 2px 12px #920CF2;
 }
 
 /* Particle styles */
-.gooey-particle, .gooey-point {
+.particle, .point {
   display: block;
-  opacity: 0;
+  opacity: 1;
   width: 24px;
   height: 24px;
   border-radius: 9999px;
   transform-origin: center;
 }
 
-.gooey-point {
-  background: #060A27;
+.point {
+  background: #920CF2;
   opacity: 1;
-  box-shadow: 0 0 12px 0 #060A27;
+  box-shadow: 0 0 12px 0 #920CF2;
+  animation: point var(--time, 1200ms) ease 1;
 }
 
-.gooey-particle {
+.particle {
   position: absolute;
   top: calc(50% - 12px);
   left: calc(50% - 12px);
-  animation: gooey-particle-anim var(--time, 1200ms) ease 1;
+  animation: particle var(--time, 1200ms) ease 1;
 }
 
-.gooey-point {
-  animation: gooey-point-anim var(--time, 1200ms) ease 1;
-}
-
-@keyframes gooey-particle-anim {
+@keyframes particle {
   0% {
     transform: rotate(0deg) translate(var(--start-x, 0px), var(--start-y, 0px));
     opacity: 1;
@@ -126,7 +134,7 @@
   }
 }
 
-@keyframes gooey-point-anim {
+@keyframes point {
   0% {
     transform: scale(0);
     opacity: 0;
@@ -149,8 +157,4 @@
     transform: scale(0);
     opacity: 0;
   }
-}
-
-.gooey-nav-item a {
-  text-decoration: none;
 }

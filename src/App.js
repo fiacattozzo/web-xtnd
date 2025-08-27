@@ -4,7 +4,8 @@ import React, { useRef, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { SplitText } from 'gsap/dist/SplitText';
-import TextPressure from './TextPressure';
+import TextPressure from './TextPressure'; 
+import "./index.css"; 
 import GooeyNav from './GooeyNav';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -143,42 +144,29 @@ function App() {
       {/* Scroll container */}
       <div className="scroll-container">
 
-        {/* Hero section */}
-        <section className="scroll-section hero-section relative overflow-hidden" id="section1">
-          <video
-            ref={heroVideoRef}
-            className="absolute inset-0 w-full h-full object-cover"
-            autoPlay
-            muted
-            loop
-            playsInline
-          >
-            <source src="https://a.storyblok.com/f/271652/x/d64c0936fe/zentry_trailer-md.mp4" type="video/mp4" />
-          </video>
-
-          <div 
-            ref={xtndLabTextRef} 
-            className="absolute inset-0 w-full h-full flex items-center justify-center z-20 p-4"
-          >
+        {/* Inicio XTND LAB */}
+        <section className="scroll-section inicio-section dither-bg relative overflow-hidden" id="section1">
+          <div className="flex flex-col items-center justify-center w-full h-full">
             <TextPressure
               text="XTND LAB"
-              flex={false}
-              alpha={false}
-              stroke={false}
+              fontFamily="Space Grotesk"
+              textColor="#111"
+              minFontSize={150}
+              className="font-bold mb-8 text-[10vw] leading-none"
               width={true}
               weight={true}
-              italic={true}
-              textColor="#ffffff"
-              strokeColor="#ff0000"
-              minFontSize={48}
+              scale={true}
             />
-          </div>
-
-          <div
-            ref={heroTextRef}
-            className="relative z-10 flex flex-col items-center justify-center h-full text-center"
-          >
-            <p className="mt-4 text-xl md:text-2xl font-light">Laboratorio Multimedia</p>
+            <TextPressure
+              text="laboratorio multimedia"
+              fontFamily="Space Grotesk"
+              textColor="#000"
+              minFontSize={100} // más chico pero interactivo
+              className="font-bold leading-none"
+              width={true}
+              weight={true}
+              scale={true}
+            />
           </div>
         </section>
 

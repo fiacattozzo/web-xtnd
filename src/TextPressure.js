@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 const TextPressure = ({
-  text = 'Hello!',
+  text = 'XTND LAB',
   fontFamily = 'Space Grotesk',
   
   width = true,
@@ -15,12 +15,12 @@ const TextPressure = ({
   stroke = false,
   scale = false,
 
-  textColor = '#FFFFFF',
+  textColor = '#000000',
   strokeColor = '#FF0000',
   strokeWidth = 2,
   className = '',
 
-  minFontSize = 36,
+  minFontSize = 150,
 
 }) => {
   const containerRef = useRef(null);
