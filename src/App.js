@@ -57,36 +57,34 @@ function App(){
     { category:'Servicios Integrales', services:['Branding y servicios integrales para empresas','Capacitaciones y Workshops','Co-creación'] },
   ];
 
-  const HERO_VH = 140; // alto total del hero / dither
+  const HERO_VH = 140; // alto del hero / dither
 
   return (
     <div ref={mainRef} className="relative text-white">
-      {/* Dither ARRIBA: overlay fijo en el tope (como ReactBits) */}
-      <div
-        className="fixed top-0 left-0 right-0 pointer-events-none -z-10"
-        style={{ height: `${HERO_VH}vh`, WebkitMaskImage: 'linear-gradient(to bottom, black, black 90%, transparent)', maskImage: 'linear-gradient(to bottom, black, black 90%, transparent)' }}
-      >
-        <Dither
-          waveSpeed={0.06}
-          waveFrequency={4.1}
-          waveAmplitude={0.3}
-          waveColor={[0.7,0.8,1]}
-          colorNum={4}
-          pixelSize={2}
-          enableMouseInteraction
-          mouseRadius={0.4}
-          patternScale={0.6}
-        />
-      </div>
-
       {/* Nav */}
       <div className="fixed top-6 left-1/2 -translate-x-1/2 w-11/12 max-w-7xl z-50">
         <GooeyNav items={navItems} />
       </div>
 
-      {/* HERO sin dither interno */}
-      <section id="section1" className="hero-section relative overflow-hidden" style={{ minHeight:`${HERO_VH}vh` }}>
-        <div className="relative z-10 flex items-center justify-center h-full px-4 text-center">
+      {/* HERO — Dither como fondo detrás del texto */}
+      <section id="section1" className="hero-section relative isolate overflow-hidden" style={{ minHeight:`${HERO_VH}vh` }}>
+        {/* FONDO DITHER (detrás) */}
+        <div className="absolute inset-0 -z-10 pointer-events-none">
+          <Dither
+            waveSpeed={0.06}
+            waveFrequency={4.1}
+            waveAmplitude={0.3}
+            waveColor={[0.7,0.8,1]}
+            colorNum={4}
+            pixelSize={2}
+            enableMouseInteraction
+            mouseRadius={0.4}
+            patternScale={0.6}
+          />
+        </div>
+
+        {/* CONTENIDO (encima) */}
+        <div className="relative z-20 flex items-center justify-center h-full px-4 text-center">
           <div>
             <TextPressure
               text="XTND LAB"
@@ -140,7 +138,7 @@ function App(){
         </div>
       </section>
 
-      {/* Resto de secciones */}
+      {/* Resto de secciones ... */}
     </div>
   );
 }

@@ -20,7 +20,7 @@ const TextPressure = ({
   strokeWidth = 2,
   className = '',
 
-  minFontSize = 150,
+  minFontSize = 100,
 
 }) => {
   const containerRef = useRef(null);
