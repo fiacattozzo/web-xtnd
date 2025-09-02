@@ -1,0 +1,162 @@
+/* === Fuentes locales (poné los .woff/.woff2 en /public/fonts/) === */
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('/fonts/OpenDyslexic3-Regular.woff2') format('woff2'),
+       url('/fonts/OpenDyslexic3-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('/fonts/OpenDyslexic3-Bold.woff2') format('woff2'),
+       url('/fonts/OpenDyslexic3-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* === Widget flotante (UI) === */
+#a11y-widget {
+  position: fixed;
+  left: 16px;  /* abajo-izquierda */
+  bottom: 16px;
+  right: auto;
+  z-index: 2147483647;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+#a11y-toggle {
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 14px;
+  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(0,0,0,.16);
+  background: #111;
+  color: #fff;
+  font-weight: 700;
+}
+#a11y-panel {
+  position: fixed;
+  left: 16px;
+  bottom: 64px;
+  right: auto;
+  width: 300px;
+  max-width: calc(100% - 32px);
+  background: #fff;
+  color: #111;
+  border-radius: 14px;
+  box-shadow: 0 16px 48px rgba(0,0,0,.22);
+  padding: 12px;
+  display: none;
+}
+#a11y-panel.open { display: block; }
+#a11y-panel h3 { font-size: 14px; margin: 6px 0 10px; font-weight: 700; }
+.a11y-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 6px 0; }
+.a11y-col { display: grid; gap: 8px; }
+.a11y-row button,
+.a11y-row input[type="checkbox"],
+.a11y-row input[type="radio"] { cursor: pointer; }
+.a11y-note { font-size: 12px; opacity: .7; margin-top: 6px; }
+.a11y-pill { border: 1px solid #e5e7eb; background: #f9fafb; padding: 6px 10px; border-radius: 999px; display: inline-flex; align-items: center; gap: 8px; }
+#a11y-reset { width: 100%; margin-top: 8px; border: 1px solid #e5e7eb; background: #fafafa; border-radius: 10px; padding: 8px; cursor: pointer; }
+
+/* === Estados globales aplicados al <html> === */
+:root { --a11y-zoom: 1; }
+
+/* Escala global (afecta rem/em) */
+html { font-size: calc(16px * var(--a11y-zoom)) !important; }
+
+/* Refuerzo para textos que usan px */
+html.a11y-zoom-all :is(p, li, a, span, blockquote, figcaption) {
+  font-size: calc(1em * var(--a11y-zoom)) !important;
+}
+
+/* ======= OVERRIDE DE FUENTES HIPER-FUERTE ======= */
+/* === Fuentes locales (coinciden con tus nombres de archivo) === */
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('/fonts/OpenDyslexic-Regular.woff2') format('woff2'),
+       url('/fonts/OpenDyslexic-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('/fonts/OpenDyslexic-Bold.woff2') format('woff2'),
+       url('/fonts/OpenDyslexic-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('/fonts/OpenDyslexic-Regular.woff2') format('woff2'),
+       url('/fonts/OpenDyslexic-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('/fonts/OpenDyslexic-Bold.woff2') format('woff2'),
+       url('/fonts/OpenDyslexic-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('/fonts/OpenDyslexic-Italic.woff2') format('woff2'),
+       url('/fonts/OpenDyslexic-Italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('/fonts/OpenDyslexic-Bold-Italic.woff2') format('woff2'),
+       url('/fonts/OpenDyslexic-Bold-Italic.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ======= OVERRIDE DE FUENTES HIPER-FUERTE ======= */
+html.a11y-font-legible,
+html.a11y-font-legible * { font-family: 'Atkinson Hyperlegible', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important; }
+html.a11y-font-legible *::before,
+html.a11y-font-legible *::after { font-family: 'Atkinson Hyperlegible', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important; }
+
+html.a11y-font-dyslexic,
+html.a11y-font-dyslexic * { font-family: 'OpenDyslexic', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important; }
+html.a11y-font-dyslexic *::before,
+html.a11y-font-dyslexic *::after { font-family: 'OpenDyslexic', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important; }
+
+
+/* Subrayar enlaces y foco visible */
+html.a11y-underline a { text-decoration: underline !important; }
+html .a11y-focus :focus { outline: 3px solid #1e90ff !important; outline-offset: 2px; }
+
+/* Alto contraste (genérico) */
+html.a11y-contrast { filter: contrast(1.25) saturate(1.1); }
+
+/* Pausar animaciones */
+html.a11y-pause-anim *,
+html.a11y-pause-anim *::before,
+html.a11y-pause-anim *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+
+/* Interlineado */
+html.a11y-line p,
+html.a11y-line li,
+html.a11y-line span,
+html.a11y-line a {
+  line-height: 1.75 !important;
+}
+
+/* Z-index altísimo */
+#userwayAccessibilityIcon, #a11y-widget, #a11y-panel { z-index: 2147483647 !important; }
