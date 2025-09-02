@@ -6,18 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Web XTND</title>
 
-    <!-- Accesibilidad: fuentes y CSS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Fuentes + CSS principal del widget -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/a11y-widget.css" />
+
+    <!-- Extra mínimo para el switch y una transición suave de tema -->
+    <style id="a11y-inline-extra">
+      /* Suaviza el cambio claro/oscuro (usamos filter en <html>) */
+      html { transition: filter .3s ease, background-color .3s ease, color .3s ease; }
+
+      /* === Switch tipo toggle (solo estilos del control) === */
+      #a11y-theme-switch { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
+      .a11y-switch { position: relative; width: 48px; height: 24px; }
+      .a11y-switch input { opacity: 0; width: 0; height: 0; }
+      .a11y-slider {
+        position: absolute; inset: 0; cursor: pointer; background-color: #ccc; border-radius: 999px;
+        transition: .3s; display: flex; align-items: center; justify-content: space-between; padding: 0 6px; font-size: 14px;
+      }
+      .a11y-slider::before {
+        content: ""; position: absolute; height: 18px; width: 18px; left: 3px; bottom: 3px;
+        background-color: #fff; border-radius: 50%; transition: .3s;
+      }
+      .a11y-switch input:checked + .a11y-slider { background-color: #666; }
+      .a11y-switch input:checked + .a11y-slider::before { transform: translateX(24px); }
+      .a11y-slider span { z-index: 1; }
+      html.a11y-theme-dark #a11y-theme-switch .a11y-slider { background: #333; color: #fff; }
+    </style>
   </head>
   <body>
     <div id="root"></div>
 
     <script type="module" src="/src/main.jsx"></script>
-
-    <!-- Accesibilidad: JS del widget (una sola vez y dentro del body) -->
     <script src="/a11y-widget.js" defer></script>
   </body>
 </html>
